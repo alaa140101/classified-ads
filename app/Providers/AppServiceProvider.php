@@ -23,6 +23,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer(
+            'partials.categoryNav', 'App\Http\ViewComposers\CategoryComposer'
+        );
     }
 }

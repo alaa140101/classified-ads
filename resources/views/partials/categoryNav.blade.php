@@ -1,10 +1,7 @@
 <ul class="nav justify-content-center">
-    {{-- @foreach($categories as $category)
+    @foreach($categories as $category)
         <li class="nav-item">
-            <a class="nav-link active" href="/category/{{$category->id}}/{{$category->slug}}">{{$category->category_name}}</a>
+            <a class="nav-link active" href="/category/{{$category->id}}/{{$category->slug}}">{{$category->name}}</a>
         </li>
-    @endforeach --}}
-        <li class="nav-item">
-            <a class="nav-link active" href="#">drhehr</a>
-        </li>
+    @endforeach
 </ul>
