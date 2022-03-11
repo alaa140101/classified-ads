@@ -23,6 +23,11 @@
                         </li>
                     @endif
                 @else
+                    <li class="nav-item nav-link"><a href="{{route('ad.create')}}" class="btn icon-btn btn-light">
+                        <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success">
+                            أضف إعلان جديد
+                        </span>
+                    </a></li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>

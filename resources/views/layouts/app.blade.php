@@ -21,7 +21,7 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
 </head>
-<body>
+<body dir="rtl" style="text-align: right">
     <div id="app">
         
         @include('partials/navbar')
@@ -34,11 +34,13 @@
             @include('partials/categoryNav')
         </div>
 
-        <main class="py-4">
+        <main class="py-4 px-4">
             @yield('content')
         </main>
 
-        @include('partials/footer')
+        <footer class="mr-5">
+            @include('partials/footer')
+          </footer>
     </div>
 </body>
 </html>

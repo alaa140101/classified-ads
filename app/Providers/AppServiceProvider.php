@@ -15,6 +15,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton('App\Http\ViewComposers\CategoryComposer');
         $this->app->singleton('App\Http\ViewComposers\CountryComposer');
+        $this->app->singleton('App\Http\ViewComposers\CurrencyComposer');
     }
 
     /**
@@ -29,6 +30,9 @@ class AppServiceProvider extends ServiceProvider
         );
         view()->composer(
             ['partials.searchfrm', 'lists.countries'], 'App\Http\ViewComposers\CountryComposer',
+        );
+        view()->composer(
+            'lists.currencies', 'App\Http\ViewComposers\CurrencyComposer',
         );
         
     }
