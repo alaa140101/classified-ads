@@ -12,9 +12,9 @@ class AdsController extends Controller
 {
     protected $ads;
 
-    public function __contstruct(AdsInterface $ad)
+    public function __contstruct(AdsInterface $ads)
     {
-        $this->ads = $ad;
+        $this->ads = $ads;
     }
 
     public function all()

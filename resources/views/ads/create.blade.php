@@ -46,6 +46,9 @@
                 </div>
             </div>
         </div>
+        @auth
+        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">            
+        @endauth
         <div class="form-group">
             <label for="details"> أضف الصور </label>
             <input type="file" name="images[]"  class="form-control" multiple>
