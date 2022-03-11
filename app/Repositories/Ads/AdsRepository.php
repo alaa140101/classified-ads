@@ -2,7 +2,7 @@
 namespace App\Repositories\Ads;
 
 use App\Traits\ImageUploadTrait;
-use App\Models\ {
+use App\ {
     Ad,
     Favorite,
     Image
@@ -10,7 +10,7 @@ use App\Models\ {
 
 class AdsRepository implements AdsInterface
 {
-    use ImageUploadTrait;
+    // use ImageUploadTrait;
 
     protected $ads;
 

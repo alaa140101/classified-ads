@@ -4,8 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\{
-    Ads\AdInterface,
-    Ads\AdRepository,
+    Ads\AdsInterface,
+    Ads\AdsRepository,
 };
 
 class RpositoryServiceProvider extends ServiceProvider
@@ -18,8 +18,8 @@ class RpositoryServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            AdInterface::class,
-            AdRepository::class,
+            AdsInterface::class,
+            AdsRepository::class,
         );
     }
 
