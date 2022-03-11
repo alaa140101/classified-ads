@@ -11,8 +11,8 @@
 
     {{-- @include('alerts.error') --}}
 
-    <form method="POST" action="#" enctype="multipart/form-data" dir="rtl" style="text-align: right">
-       {{ csrf_field() }}
+    <form method="POST" action="{{ route('ad.store') }}" enctype="multipart/form-data" dir="rtl" style="text-align: right">
+       @csrf
        <div class="form-group">
             <label for="country_id">حدد البلد</label>
             <select class="form-control" name="country_id" >
@@ -34,12 +34,12 @@
             <textarea class="form-control" name="text" rows="3" >{{old('text')}}</textarea>
         </div>
         <div class="form-group">
-            <label class="col-lg-3 control-label" value="{{old('price')}}">السعر</label>
+            <label class="col-lg-3 control-label" value="{{old('price')}}">السعر/العملة</label>
             <div class="row">
-                <div class="col-lg-7">
-                    <input type="number" class="form-control" value="{{old('price')}}" name="price" step="any" placeholder="" title="السعر" >
+                <div class="col-md-6">
+                    <input type="number" class="form-control" value="{{old('price')}}" name="price" step="any" placeholder="السعر" title="السعر" >
                 </div>
-                <div class="col-lg-5" title="">
+                <div class="col-md-6" title="">
                     <select class="form-control" name="currency_id">
                         @include('lists.currencies')
                     </select>

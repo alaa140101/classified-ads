@@ -26,7 +26,7 @@
         
         @include('partials/navbar')
 
-        <div class="jumbotron text-center">
+        <div class="jumbotron text-center bg-secondary">
             @include('partials/searchfrm')
         </div>
 
@@ -38,7 +38,7 @@
             @yield('content')
         </main>
 
-        <footer class="mr-5">
+        <footer class="jumbotron text-center bg-secondary">
             @include('partials/footer')
           </footer>
     </div>

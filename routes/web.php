@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Helpers\helper;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +24,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('ad', 'AdsController');
+
+Route::get('test', function() {
+    return helper::slug('موقع مبوبة');
+});

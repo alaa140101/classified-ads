@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Helpers\helper;
 
 class Ad extends Model
 {
@@ -11,6 +12,15 @@ class Ad extends Model
     // ];
 
     protected $guarded = ['id'];
+
+    public function setSlugAttribute($value)
+    {
+        $slug = helper::slug($value);
+
+        $uniqueslug = helper::uniqueSlug($slug, 'ads');
+
+        $this->attributes['slug'] = $uniqueslug;
+    }
     
     public function user()
     {

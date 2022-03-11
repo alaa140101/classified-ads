@@ -4,15 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\{
-    Ads\AdInterface,
-    Ads\AdRepository,
+    Ads\AdsInterface,
+    Ads\AdsRepository,
 };
 
 class AdsController extends Controller
 {
     protected $ads;
 
-    public function __contstruct(AdInterface $ad)
+    public function __contstruct(AdsInterface $ad)
     {
         $this->ads = $ad;
     }
@@ -29,6 +29,7 @@ class AdsController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request);
         $this->ads->store($request);
     }
 }
