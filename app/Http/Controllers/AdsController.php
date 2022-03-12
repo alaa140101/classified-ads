@@ -34,4 +34,11 @@ class AdsController extends Controller
 
         return back()->with('success', 'تم إضافة إعلان');
     }
+
+    public function getUserAds()
+    {
+        $ads = $this->ads->getByUser();
+
+        return view('ads.userAds', compact('ads'));
+    }
 }

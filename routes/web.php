@@ -25,6 +25,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('ad', 'AdsController');
 
-Route::get('test', function() {
-    return helper::slug('موقع مبوبة');
-});
+Route::get('userAds', 'AdsController@getUserAds');
