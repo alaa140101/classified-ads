@@ -31,5 +31,7 @@ class AdsController extends Controller
     {
         // dd($request);
         $this->ads->store($request);
+
+        return back()->with('success', 'تم إضافة إعلان');
     }
 }

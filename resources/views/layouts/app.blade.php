@@ -34,11 +34,11 @@
             @include('partials/categoryNav')
         </div>
 
-        <main class="py-4 px-4">
+        <main class="container">
             @yield('content')
         </main>
 
-        <footer class="jumbotron text-center bg-secondary">
+        <footer class="jumbotron text-center bg-secondary mt-4 p-3">
             @include('partials/footer')
           </footer>
     </div>

@@ -7,9 +7,9 @@ use App\Helpers\helper as Helper;
 
 class Ad extends Model
 {
-    // protected $fillable = [
-        // 'title', 'slug', 'text', 'price', 'user_id', 'category_id', 'country_id', 'currency_id'
-    // ];
+    protected $fillable = [
+        'title', 'slug', 'text', 'price', 'user_id', 'category_id', 'country_id', 'currency_id'
+    ];
 
     protected $guarded = ['id'];
 
@@ -25,5 +25,10 @@ class Ad extends Model
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    public function images()
+    {
+        return $this->hasMany('App\Image');
     }
 }

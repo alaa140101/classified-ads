@@ -10,7 +10,7 @@ use App\ {
 
 class AdsRepository implements AdsInterface
 {
-    // use ImageUploadTrait;
+    use ImageUploadTrait;
 
     protected $ads;
 
@@ -36,11 +36,11 @@ class AdsRepository implements AdsInterface
     public function store($request)
     {
         
-        $request->user()->ads()->create($request->all()+['slug'=>$request->title]);
-        // $ad = $request->user()->ads()->create($request->all()+['slug'=>$request->title]);
+        // $request->user()->ads()->create($request->all()+['slug'=>$request->title]);
+        $ad = $request->user()->ads()->create($request->all()+['slug'=>$request->title]);
 
-        // if($request->file('images'))
-        // $this->storeImags($ad,$request->file('images'));
+        if($request->file('images'))
+        $this->storeImags($ad,$request->file('images'));
     }
 
     public function storeImags($ad,$imgArry)

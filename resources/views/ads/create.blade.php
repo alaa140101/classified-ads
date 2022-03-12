@@ -7,9 +7,9 @@
 <div class="col-lg-8">
     <p><h2> أدخل تفاصيل إعلانك</h2></p>
 
-    {{-- @include('alerts.success') --}}
+    @include('alerts.success')
 
-    {{-- @include('alerts.error') --}}
+    @include('alerts.error')
 
     <form method="POST" action="{{ route('ad.store') }}" enctype="multipart/form-data" dir="rtl" style="text-align: right">
        @csrf
