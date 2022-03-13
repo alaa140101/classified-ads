@@ -26,3 +26,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('ad', 'AdsController');
 
 Route::get('userAds', 'AdsController@getUserAds');
+
+Route::get('{id}/{slug}', 'AdsController@getByCategory');

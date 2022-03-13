@@ -62,4 +62,11 @@ class AdsController extends Controller
 
         return back()->with('success', 'تم حذف الإعلان');
     }
+
+    public function getByCategory($id)
+    {
+        $ads = $this->ads->getByCategory($id);
+
+        return view('ads.adsByCategory', compact('ads'));
+    }
 }
