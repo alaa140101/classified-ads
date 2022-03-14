@@ -32,8 +32,18 @@ class Ad extends Model
         return $this->belongsTo('App\Category');
     }
 
+    public function country()
+    {
+        return $this->belongsTo('App\Country');
+    }
+
     public function images()
     {
         return $this->hasMany('App\Image');
+    
+    }
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
     }
 }

@@ -69,4 +69,11 @@ class AdsController extends Controller
 
         return view('ads.adsByCategory', compact('ads'));
     }
+
+    public function show($id)
+    {
+        $ad = $this->ads->getDetails($id);
+
+        return view('ads.show', compact('ad'));
+    }
 }

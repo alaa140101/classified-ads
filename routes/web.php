@@ -28,3 +28,5 @@ Route::resource('ad', 'AdsController');
 Route::get('userAds', 'AdsController@getUserAds');
 
 Route::get('{id}/{slug}', 'AdsController@getByCategory');
+
+Route::get('ad/{id}/{slug}', 'AdsController@show');
