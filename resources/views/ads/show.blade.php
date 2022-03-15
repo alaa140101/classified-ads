@@ -14,7 +14,8 @@
             <button  id="fav" data-id="{{$ad->id}}" class="btn-sm btn-outline-primary waves-effect {{$favorited?'unfav':'fav'}}">{{$favorited?"إزالة من المفضلة":"إضافة للمفضلة"}}</button>
         @endif
 
-        @include('partials.shareBtns') --}}
+        --}}
+        @include('partials.shareBtns') 
     </div>
     <div class="col-lg-4 col-md-6 col-xs-11">
         <div id="carouselIndicators" class="carousel slide" >
