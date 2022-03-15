@@ -32,3 +32,5 @@ Route::get('{id}/{slug}', 'AdsController@getByCategory');
 Route::get('ad/{id}/{slug}', 'AdsController@show');
 
 Route::post('search', 'AdsController@search');
+
+Route::post('ads/{id}/favorite', 'FavoriteController@store');

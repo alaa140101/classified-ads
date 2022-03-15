@@ -10,11 +10,9 @@
 
 <div class="row ">
     <div class="col-lg-11 col-md-6 col-xs-11 m-2">
-        {{-- @if(Auth::user())
-            <button  id="fav" data-id="{{$ad->id}}" class="btn-sm btn-outline-primary waves-effect {{$favorited?'unfav':'fav'}}">{{$favorited?"إزالة من المفضلة":"إضافة للمفضلة"}}</button>
-        @endif
-
-        --}}
+        @if(Auth::user())
+            <button  id="fav" data-id="{{$ad->id}}" class="btn-sm btn-outline-primary waves-effect ">إضافة إلى المفضلة</button>
+        @endif       
         @include('partials.shareBtns') 
     </div>
     <div class="col-lg-4 col-md-6 col-xs-11">
@@ -22,7 +20,7 @@
             <div class="carousel-inner" >
                 <?php $i=0; ?>
                 @if(count($ad->images)==0)
-                 <img  src="{{asset('/storage/images/default.png')}}" >
+                 <img  src="{{asset('/storage/images/thumbs/default.jpg')}}" >
                 @endif
 
                 @foreach($ad->images as $img)
@@ -144,50 +142,51 @@
 <script>
     $(document).ready(function(){
 
-        $('#sendEmail').on('click', function(event){
-            event.preventDefault();
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: '/sendMail',
-                type: 'post',
-                data: $('#send').serialize(),
-                success: function (data)
-                {
-                    $("#msgs")
-                        .removeClass("alert alert-danger")
-                        .addClass("alert alert-success")
-                        .text('تم الإرسال بنجاح')
-                },
-                error: function (response)
-                {
-                    var jsonResponse = JSON.parse(response.responseText);
-                    $("#msgs")
-                        .empty()
-                        .addClass("alert alert-danger")
-                    $.each(jsonResponse['errors'], function (key, value) {
-                        $("#msgs").append('<li>'+value+'</li>');
-                    });
-                }
-            });
-        });
+        // $('#sendEmail').on('click', function(event){
+        //     event.preventDefault();
+        //     $.ajax({
+        //         headers: {
+        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //         },
+        //         url: '/sendMail',
+        //         type: 'post',
+        //         data: $('#send').serialize(),
+        //         success: function (data)
+        //         {
+        //             $("#msgs")
+        //                 .removeClass("alert alert-danger")
+        //                 .addClass("alert alert-success")
+        //                 .text('تم الإرسال بنجاح')
+        //         },
+        //         error: function (response)
+        //         {
+        //             var jsonResponse = JSON.parse(response.responseText);
+        //             $("#msgs")
+        //                 .empty()
+        //                 .addClass("alert alert-danger")
+        //             $.each(jsonResponse['errors'], function (key, value) {
+        //                 $("#msgs").append('<li>'+value+'</li>');
+        //             });
+        //         }
+        //     });
+        // });
 
         $('#fav').on('click', function(){
 
             var ad_id = $(this).data('id');
-            ad = $(this);
+            // ad = $(this);
+            var url='/ads/'+ad_id+'/favorite';
 
-            if (ad.hasClass("fav") ) {
-                var url='/ads/'+ad_id+'/favorite';
-                var status="unfav";
-                var text="إزالة من المفضلة"
-            }
-            else{
-                 url='/ads/'+ad_id+'/unfavorite';
-                 status="fav";
-                 text="إضافة للمفضلة";
-            }
+            // if (ad.hasClass("fav") ) {
+            //     var url='/ads/'+ad_id+'/favorite';
+            //     var status="unfav";
+            //     var text="إزالة من المفضلة"
+            // }
+            // else{
+            //      url='/ads/'+ad_id+'/unfavorite';
+            //      status="fav";
+            //      text="إضافة للمفضلة";
+            // }
 
             $.ajax({
                 headers: {
@@ -197,14 +196,15 @@
                 type: 'post',
                 data: {
                     'ad_id': ad_id
-                },
-                success: function(response){
-                    ad
-                    .removeClass('fav')
-                    .removeClass('unfav')
-                    .addClass(status)
-                    .html(text)
                 }
+                // ,
+                // success: function(response){
+                //     ad
+                //     .removeClass('fav')
+                //     .removeClass('unfav')
+                //     .addClass(status)
+                //     .html(text)
+                // }
             });
 
         });

@@ -48,6 +48,11 @@ class Ad extends Model
         return $this->hasMany('App\Comment');
     }
 
+    public function favorites()
+    {
+        return $this->hasMany('App\Favorite');
+    }
+
     public function scopeFilter($query, Request $request)
         {
             if($request->country)

@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use App\Repositories\{
     Ads\AdsInterface,
     Ads\AdsRepository,
+    Favorites\FavoriteInterface,
+    Favorites\FavoriteRepository,
 };
 
 class RpositoryServiceProvider extends ServiceProvider
@@ -20,6 +22,11 @@ class RpositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             AdsInterface::class,
             AdsRepository::class,
+        );
+
+        $this->app->bind(
+            FavoriteInterface::class,
+            FavoriteRepository::class,
         );
     }
 
