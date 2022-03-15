@@ -76,4 +76,11 @@ class AdsController extends Controller
 
         return view('ads.show', compact('ad'));
     }
+
+    public function search(Request $request)
+    {
+        $ads = $this->ads->search($request);
+
+        return view('ads.adsByCategory', compact('ads'));
+    }
 }

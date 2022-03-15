@@ -1,7 +1,7 @@
 ﻿
 <div class="col-md-12">
     <form method="post" action="/search">
-        {{ csrf_field() }}
+        @csrf
         <div class="form-row">
             <div class="form-group col-md-3">
                 <select class="form-control" name="category" >

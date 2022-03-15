@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use App\Helpers\helper as Helper;
 
 class Ad extends Model
@@ -46,4 +47,23 @@ class Ad extends Model
     {
         return $this->hasMany('App\Comment');
     }
+
+    public function scopeFilter($query, Request $request)
+        {
+            if($request->country)
+            {
+                $query->whereCountry_id($request);
+            }
+            if($request->category)
+            {
+                $query->whereCategory_id($request);
+            }
+
+            if($request->keyword)
+            {
+                $query->where('title', 'LIKE', '%'.$request->keyword.'%');
+            }
+            
+            return $query->with('images')->get();
+        }
 }
