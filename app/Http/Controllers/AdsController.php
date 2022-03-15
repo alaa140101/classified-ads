@@ -6,15 +6,19 @@ use Illuminate\Http\Request;
 use App\Repositories\{
     Ads\AdsInterface,
     Ads\AdsRepository,
+    Favorites\FavoriteInterface,
 };
 
 class AdsController extends Controller
 {
     protected $ads;
+    protected $favorite;
 
-    public function __construct(AdsInterface $ads)
+    public function __construct(AdsInterface $ads, FavoriteInterface $favorite)
     {
         $this->ads = $ads;
+
+        $this->favorite = $favorite;
     }
 
     public function all()
@@ -73,8 +77,12 @@ class AdsController extends Controller
     public function show($id)
     {
         $ad = $this->ads->getDetails($id);
+        $favorited = "";
+        
+        if(\Auth::check())
+            $favorited = $this->favorite->show($id);
 
-        return view('ads.show', compact('ad'));
+        return view('ads.show', compact('ad', 'favorited'));
     }
 
     public function search(Request $request)

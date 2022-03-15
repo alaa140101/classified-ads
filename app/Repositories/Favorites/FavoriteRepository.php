@@ -20,11 +20,13 @@ class FavoriteRepository implements FavoriteInterface
 
   public function show($id)
   {
+    $favorited = \Auth::user()->favAds()->whereAd_id($id)->first();
 
+    return $favorited ? true : false;
   }
 
   public function delete($id)
   {
-
+    \Auth::user()->favAds()->detach($id);
   }
 }

@@ -11,7 +11,7 @@
 <div class="row ">
     <div class="col-lg-11 col-md-6 col-xs-11 m-2">
         @if(Auth::user())
-            <button  id="fav" data-id="{{$ad->id}}" class="btn-sm btn-outline-primary waves-effect ">إضافة إلى المفضلة</button>
+            <button  id="fav" data-id="{{$ad->id}}" class="{{ $favorited ? 'unfav' : 'fav' }} btn-sm btn-outline-primary waves-effect ">{{ $favorited ? "إضافة إلى المفضلة" : "إزالة من المفضلة"}}</button>
         @endif       
         @include('partials.shareBtns') 
     </div>
@@ -22,7 +22,6 @@
                 @if(count($ad->images)==0)
                  <img  src="{{asset('/storage/images/thumbs/default.jpg')}}" >
                 @endif
-
                 @foreach($ad->images as $img)
                     <?php $i++;?>
                     <div class="carousel-item{{$i<=1?' active':''}} " >
@@ -174,19 +173,19 @@
         $('#fav').on('click', function(){
 
             var ad_id = $(this).data('id');
-            // ad = $(this);
-            var url='/ads/'+ad_id+'/favorite';
+            ad = $(this);
+            // var url='/ads/'+ad_id+'/favorite';
 
-            // if (ad.hasClass("fav") ) {
-            //     var url='/ads/'+ad_id+'/favorite';
-            //     var status="unfav";
-            //     var text="إزالة من المفضلة"
-            // }
-            // else{
-            //      url='/ads/'+ad_id+'/unfavorite';
-            //      status="fav";
-            //      text="إضافة للمفضلة";
-            // }
+            if (ad.hasClass("fav") ) {
+                var url='/ads/'+ad_id+'/favorite';
+                var status="unfav";
+                var text="إزالة من المفضلة"
+            }
+            else{
+                 url='/ads/'+ad_id+'/unfavorite';
+                 status="fav";
+                 text="إضافة للمفضلة";
+            }
 
             $.ajax({
                 headers: {
@@ -196,15 +195,14 @@
                 type: 'post',
                 data: {
                     'ad_id': ad_id
+                },
+                success: function(response){
+                    ad
+                    .removeClass('fav')
+                    .removeClass('unfav')
+                    .addClass(status)
+                    .html(text)
                 }
-                // ,
-                // success: function(response){
-                //     ad
-                //     .removeClass('fav')
-                //     .removeClass('unfav')
-                //     .addClass(status)
-                //     .html(text)
-                // }
             });
 
         });
