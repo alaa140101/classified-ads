@@ -78,7 +78,7 @@ class AdsController extends Controller
     {
         $ad = $this->ads->getDetails($id);
         $favorited = "";
-        
+
         if(\Auth::check())
             $favorited = $this->favorite->show($id);
 
@@ -90,5 +90,12 @@ class AdsController extends Controller
         $ads = $this->ads->search($request);
 
         return view('ads.adsByCategory', compact('ads'));
+    }
+
+    public function index()
+    {
+        
+        $ads=$this->ads->getCommonAds();
+        return view('index',compact('ads'));
     }
 }

@@ -97,7 +97,13 @@ class AdsRepository implements AdsInterface
 
     public function getCommonAds()
     {
-        return \Auth::user()->favAds;
+        return $this->ads::with('images')->select('id', 'title', 'slug', 'price')->whereIn('id',
+            Favorite::select('ad_id')
+            ->groupBy('ad_id')
+            ->orderByRaw('COUNT(*) DESC')
+            ->limit(8)
+            ->get()
+        );
     }
 }
 ?>

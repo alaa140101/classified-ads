@@ -19,6 +19,9 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/', "AdsController@index");
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
