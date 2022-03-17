@@ -29,4 +29,9 @@ class FavoriteRepository implements FavoriteInterface
   {
     \Auth::user()->favAds()->detach($id);
   }
+
+  public function all()
+  {
+    return \Auth::user()->favAds;
+  }
 }

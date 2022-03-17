@@ -39,3 +39,5 @@ Route::post('search', 'AdsController@search');
 Route::post('ads/{id}/favorite', 'FavoriteController@store');
 
 Route::post('ads/{id}/unfavorite', 'FavoriteController@destroy');
+
+Route::get('userFav', 'FavoriteController@index');

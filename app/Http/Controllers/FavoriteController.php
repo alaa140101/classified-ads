@@ -17,6 +17,13 @@ class FavoriteController extends Controller
         $this->favorite = $favorite;
     }
 
+    public function index()
+    {
+        $userfav = $this->favorite->all();
+
+        return view('ads.userFavorites', compact('userfav'));
+    }
+
     public function store(Request $request)
     {
         $this->favorite->store($request);

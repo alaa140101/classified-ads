@@ -35,6 +35,7 @@
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a href="/userAds" class="dropdown-item">إعلاناتي</a>
+                            <a href="/userFav" class="dropdown-item">المفضلة</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
