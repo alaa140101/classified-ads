@@ -45,7 +45,7 @@ class Ad extends Model
     }
     public function comments()
     {
-        return $this->hasMany('App\Comment');
+        return $this->hasMany('App\Comment')->where('parent_id' , null);
     }
 
     public function favorites()

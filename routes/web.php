@@ -41,3 +41,7 @@ Route::post('ads/{id}/favorite', 'FavoriteController@store');
 Route::post('ads/{id}/unfavorite', 'FavoriteController@destroy');
 
 Route::get('userFav', 'FavoriteController@index');
+
+Route::post('comments/store', 'CommentController@store')->name('comments.store');
+
+Route::post('comment/reply', 'CommentController@reply');

@@ -8,6 +8,8 @@ use App\Repositories\{
     Ads\AdsRepository,
     Favorites\FavoriteInterface,
     Favorites\FavoriteRepository,
+    Comments\CommentsInterface,
+    Comments\CommentsRepository,
 };
 
 class RpositoryServiceProvider extends ServiceProvider
@@ -27,6 +29,11 @@ class RpositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             FavoriteInterface::class,
             FavoriteRepository::class,
+        );
+
+        $this->app->bind(
+            CommentsInterface::class,
+            CommentsRepository::class,
         );
     }
 
