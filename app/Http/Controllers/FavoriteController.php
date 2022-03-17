@@ -14,6 +14,7 @@ class FavoriteController extends Controller
 
     public function __construct(FavoriteInterface $favorite)
     {
+        $this->middleware('auth', ['only' => ['store', 'destroy']]);
         $this->favorite = $favorite;
     }
 

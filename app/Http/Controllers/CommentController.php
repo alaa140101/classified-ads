@@ -13,6 +13,7 @@ class CommentController extends Controller
 
     public function __construct(CommentsInterface $comment)
     {
+        $this->middleware('auth', ['only' => ['reply', 'store']]);
         $this->comment = $comment;
     }
 

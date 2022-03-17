@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\AdRequset;
 use App\Repositories\{
     Ads\AdsInterface,
     Ads\AdsRepository,
@@ -16,6 +17,7 @@ class AdsController extends Controller
 
     public function __construct(AdsInterface $ads, FavoriteInterface $favorite)
     {
+        $this->middleware('auth', ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
         $this->ads = $ads;
 
         $this->favorite = $favorite;
@@ -31,7 +33,7 @@ class AdsController extends Controller
         return view('ads.create');
     }
 
-    public function store(Request $request)
+    public function store(AdRequset $request)
     {
         // dd($request);
         $this->ads->store($request);
@@ -43,7 +45,10 @@ class AdsController extends Controller
     {
         $ad = $this->ads->getById($id);
 
-        return view('ads.edit', compact('ad'));
+        if(\Gate::allows('edit-ad', $ad)){
+            return view('ads.edit', compact('ad'));
+        }
+        abort(403);
     }
 
     public function update(Request $request, $id)
@@ -63,8 +68,10 @@ class AdsController extends Controller
     public function destroy($id)
     {
         $this->ads->delete($id);
-
-        return back()->with('success', 'تم حذف الإعلان');
+        if(\Gate::allows('edit-ad', $ad)){
+            return back()->with('success', 'تم حذف الإعلان');
+        }
+        abort(403);
     }
 
     public function getByCategory($id)
