@@ -50,7 +50,44 @@
                     <p class="card-text">السعر:  {{$ad->price}}</p>
                     <h4>وصف الإعلان</h4>
                     <p class="card-text">{{$ad->text}}</p>
-                    <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#myModal">تواصل مع المعلن</button>
+                    <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#contactModal">تواصل مع المعلن</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- dialog --}}
+    <div id="contactModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title">تواصل مع المعلن</div>
+                </div>
+                <div class="modal-body">
+                    <div class="card-body p-3">
+                        <form action="/send" id="send">
+                            @csrf
+                            <div class="form-group">
+                                <input type="text" name="name" class="form-control" placeholder="اسمك">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-control" placeholder="بريدك">
+                            </div>
+                            <div class="form-group">
+                                <textarea type="text" name="msg" class="form-control" placeholder="نص الرسالة"></textarea>
+                            </div>
+
+                            <input type="hidden" name="adv_email" value="{{$ad->user->email}}" class="form-control">
+
+                            <div class="text-center">
+                                <button id="sendEmail" class="btn btn-primary btn-block rounded-0 py-2">إرسال</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="msgs"></div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-dismiss="modal" type="button">إغلاق</button>
                 </div>
             </div>
         </div>
@@ -110,7 +147,7 @@
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    url: '/sendMail',
+                    url: '/send',
                     type: 'post',
                     data: $('#send').serialize(),
                     success: function (data)

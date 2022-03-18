@@ -45,3 +45,5 @@ Route::get('userFav', 'FavoriteController@index');
 Route::post('comments/store', 'CommentController@store')->name('comments.store');
 
 Route::post('comment/reply', 'CommentController@reply');
+
+Route::post('send', 'SendMailController@sendMail');
