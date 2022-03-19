@@ -73,7 +73,7 @@ class AdsRepository implements AdsInterface
 
     public function getByUser()
     {
-        return $this->ads::whereUser_id(\Auth::user()->id)->get();
+        return $this->ads::whereUser_id(\Auth::user()->id)->with('currency')->get();
     }
 
     public function getByCategory($catId)

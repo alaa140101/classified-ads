@@ -6,7 +6,7 @@
     @foreach ($ads as $ad)
     @php 
       // dd($ad->images()->first());
-      $img_name = $ad->images()->first();
+      $img_name = $ad->images->first();
       if(isset($img_name)) 
       {
         $img_name = $img_name['image'];
