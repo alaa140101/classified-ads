@@ -38,9 +38,14 @@ class Ad extends Model
         return $this->belongsTo('App\Country');
     }
 
+    public function currency()
+    {
+        return $this->belongsTo('App\Currency');
+    }
+
     public function images()
     {
-        return $this->hasMany('App\Image');
+        return $this->hasMany('App\Image', 'ad_id');
     
     }
     public function comments()

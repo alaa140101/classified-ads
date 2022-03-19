@@ -47,7 +47,7 @@
                     <h4>المعلومات الرئيسية</h4>
                     <p class="card-text">   اسم المعلن : {{$ad->user->name}} </p>
                     <p class="card-text"> الدولة : {{$ad->country->name}} </p>
-                    <p class="card-text">السعر:  {{$ad->price}}</p>
+                    <p class="card-text">السعر:  {{$ad->price}} {{$ad->currency->name}}</p>
                     <h4>وصف الإعلان</h4>
                     <p class="card-text">{{$ad->text}}</p>
                     <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#contactModal">تواصل مع المعلن</button>
@@ -110,25 +110,8 @@
 
     <div class="row form-group mt-5" >
         <div class="col-lg-11 col-md-6 col-xs-11">
-            <div id="display_comment">                
-                <?php $comments = $ad->comments  ?>
-                @foreach($comments as $comment)
-                    <ul class="comment-container">
-                        <li class="comment-item">
-                            <div class="card">
-                                <div class="card-header">
-                                    <strong>{{$comment->user->name}}</strong>
-                                </div>
-                                <div class="card-body">
-                                    {{ $comment->content }}
-                                </div>
-                                @include('partials.replyForm')
-
-                                @include('partials.replies', ['replies' => $comment->replies])
-                            </div>
-                        </li>
-                    </ul>
-                @endforeach
+            <div id="display_comment">  
+                @include('partials.commentReplies', ['comments' => $ad->comments])
             </div>
         </div>
     </div>

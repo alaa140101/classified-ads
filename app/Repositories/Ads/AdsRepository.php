@@ -21,16 +21,12 @@ class AdsRepository implements AdsInterface
 
     public function all()
     {
-        //$ads = \Cache::remember('ads','1440', function() {
             return $this->ads::with('images')->select('id','title','slug','price')->whereIn('id',
                 Favorite::select('ad_id')
                     ->groupBy('ad_id')
                     ->orderByRaw('COUNT(*) DESC')
                     ->limit(8)->get()
                 )->get();
-       // });
-
-        return $ads;
     }
 
     public function store($request)
@@ -82,7 +78,8 @@ class AdsRepository implements AdsInterface
 
     public function getByCategory($catId)
     {
-        return $this->ads::with('images','category')->where('category_id',$catId)->get();
+        return $this->ads::with('images','category', 'currency')->where('category_id',$catId)->get();
+        // return $this->ads::with('images:id','category', 'currency:name')->select('id')->where('category_id',$catId)->get();;
     }
 
     public function delete($id)

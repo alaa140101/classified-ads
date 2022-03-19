@@ -3,7 +3,7 @@
     <li>
         <div class="card bg-light">
             <div class="card-header">
-                 <strong></strong>
+                <strong>{{$comment->user->name}}</strong>
             </div>
             <div class="card-body">
                 {{ $comment->content }}
@@ -16,3 +16,5 @@
     </li>
     @endforeach
 </ul>
+
+           

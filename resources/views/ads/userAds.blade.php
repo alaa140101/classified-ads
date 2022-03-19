@@ -23,7 +23,7 @@
         <tr>
           <td>{{$ad->created_at}}</td>
           <td>{{$ad->title}}<a href=""></a></td>
-          <td>{{$ad->price}}</td>
+          <td>{{$ad->price}}  {{$ad->currency->name}}</td>
           <td>
             <div class="btn-group" role="group">
               <a href="{{ route('ad.edit', $ad->id) }}" class="btn-sm btn-primary ml-1" role="button">تعديل<i class="glyphicon glyphicon-remove-sign"></i></a>

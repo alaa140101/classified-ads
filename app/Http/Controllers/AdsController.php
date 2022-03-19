@@ -88,7 +88,7 @@ class AdsController extends Controller
 
         if(\Auth::check())
             $favorited = $this->favorite->show($id);
-
+        
         return view('ads.show', compact('ad', 'favorited'));
     }
 
