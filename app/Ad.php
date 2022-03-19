@@ -45,7 +45,7 @@ class Ad extends Model
 
     public function images()
     {
-        return $this->hasMany('App\Image', 'ad_id');
+        return $this->hasMany('App\Image');
     
     }
     public function comments()
