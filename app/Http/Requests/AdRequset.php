@@ -27,7 +27,7 @@ class AdRequset extends FormRequest
             'title' => 'required|max: 50',
             'text' => 'required',
             'price' => 'required|numeric|digits_between:2,11',
-            'images' => 'mimes:jpeg,jpg,bmp,png',
+            'images.*' => 'mimes:jpg,bmp,png|max:2048',
         ];
     }
 
@@ -40,7 +40,8 @@ class AdRequset extends FormRequest
             'price.required' => 'حقل السعر فارغ', 
             'price.numeric' => 'حقل السعر يجب أن يكون قيمة رقمية', 
             'price.digits_between' => 'السعر المدخل يجب أن يتكون من (2 - 11) خانة رقمية',             
-            'imgs.mimes' => 'صيغة الملف يجب أن تكون jpeg,bmp,png',                         
+            'images.*.mimes' => 'صيغة الملف يجب أن تكون jpeg,bmp,png',                         
+            'images.*.max' => 'حجم الصورة يتجاوز 2 MB',                         
 
         ]; 
     }
